@@ -1,0 +1,4 @@
+git init
+git --globaal --list
+git config --globaal user.name ""
+git config --globaal user.email ""
