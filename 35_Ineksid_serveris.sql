@@ -1,17 +1,29 @@
--- Lisame tabelile DimEmployee uue veeru Salary tüüpi int
-alter table DimEmployee
-ADD Salary int
+-- Loome tabelile DimEmployee klastreeritud indeksi veeru FirstName põhjal
+Create Clustered Index IX_DimEmployee_Name
+on DimEmployee(FirstName)
 
--- Valime kõik töötajad, kelle palk on suurem kui 5000 ja väiksem kui 7000
-Select * from DimEmployee
-where Salary > 5000 and Salary < 7000
+-- Kustutame tabeli DimEmployee olemasoleva primaarvõtme indeksi PK_DimEmployee_EmployeeKey
+Drop index DimEmployee.PK_DimEmployee_EmployeeKey
 
--- Loome indeksit veerule Salary, et päringud selle veeru järgi kiiremaks muuta
-Create Index IX_tblEmployee_Salary
-ON DimEmployee (Salary asc)
+-- Loome tabelile DimEmployee klastreeritud ühendindeksi kahte veergu (Gender ja Salary) põhinevalt
+Create Clustered Index IX_DimEmployee_Gender_Salary
+ON DimEmployee(Gender DESC, Salary ASC)
 
--- Kuvame DimEmployee objekti teksti (nt vaadata objekti definitsiooni)
-execute sp_helptext DimEmployee
+-- Loome tabelile DimEmployee mitte-klastreeritud indeksi veeru FirstName põhjal
+Create NonClustered Index IX_DimEmployee_Name
+On DimEmployee(FirstName)
 
--- Kustutame indeks IX_tblEmployee_Salary tabelist DimEmployee
-Drop Index DimEmployee.IX_tblEmployee_Salary
+
+
+
+-- Klastreeritud indeks:
+-- Määrab tabelis andmete füüsilise järjestuse.
+-- Tabelil võib olla ainult üks klastreeritud indeks.
+-- Klastreeritud indeks muudab andmete salvestusjärjestust kettal.
+-- Näiteks primaarvõti loob automaatselt klastreeritud indeksi, kui see pole teisiti määratud.
+
+-- Mitte-klastreeritud indeks:
+-- Indeks on salvestatud eraldi tabeli andmetest.
+-- Võib olla mitu mitte-klastreeritud indeksit ühel tabelil.
+-- Mitte-klastreeritud indeks sisaldab näitajaid (pointereid) tegelike andmete asukohtadele.
+-- Ei mõjuta andmete füüsilist järjestust tabelis.
