@@ -13,4 +13,4 @@ git push
 --
 ssh võti loomiseks:
 ida_rsa.pub on vaja lisada githubi nagu deploy key
-ssh-keyegen -o -t rsa -C "email@exmaple.com"
+ssh-keyegen -o -t rsa -C "email@exmaple.com"ы
