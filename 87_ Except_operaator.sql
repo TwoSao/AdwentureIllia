@@ -51,3 +51,34 @@ Select EmployeeKey, FirstName, Gender, Salary
 From DimEmployee  
 Where Salary >= 60000  
 Order By FirstName
+
+
+-- 88. Erinevus EXCEPT ja NOT IN operaatoril
+
+-- Tagastab read, mis on TableA-s, kuid mitte TableB-s
+select Id, Name, Gender 
+from TableA
+except
+select Id, Name, Gender 
+from TableB
+
+
+-- Sama tulemus NOT IN operaatoriga
+select Id, Name, Gender 
+from TableA
+where id NOT IN (select id from TableB)
+
+
+-- See päring tekitab vea, sest alam-päringus on mitu veergu
+select Id, Name, Gender 
+from TableA
+where id NOT IN (select id, Name from TableB)
+
+
+/*
+Kokkuvõte:
+- EXCEPT tagastab unikaalsed read vasakust päringust, mida ei ole paremas päringus.
+- NOT IN tagastab read vasakust tabelist, mille väärtusi ei leita alampäringu tulemustest.
+- EXCEPT eemaldab duplikaadid ja nõuab sama arvu ning tüüpi veerge mõlemas päringus.
+- NOT IN töötab ainult ühe veeruga ja ei eemalda duplikaate.
+*/
