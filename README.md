@@ -19,7 +19,7 @@
    4.1 vWEmployeesCountByDepartment, vWEmployeesNonConfidentialData, vWITDepartment_Employees, vWEmployeesByDepartment
 <img width="324" height="284" alt="image" src="https://github.com/user-attachments/assets/ec65b9a5-9c36-46c2-a982-f97aabda979e" />
 
-5. 87. Except operaator, 88. Erinevus Except ja not in operaatoril
+5 87Except operaator, 88. Erinevus Except ja not in operaatoril
 Table A, B. Kasutumine execpt
 <img width="372" height="703" alt="image" src="https://github.com/user-attachments/assets/0c77890b-c9ba-494b-a6d9-91b126fce299" />
 
