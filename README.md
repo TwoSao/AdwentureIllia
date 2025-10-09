@@ -12,3 +12,17 @@
 2.3 Ajutine laud EmployeeDetails
 <img width="276" height="90" alt="{866D3596-51CB-4E4D-A0E1-454131C49E23}" src="https://github.com/user-attachments/assets/0ecb7b9f-eaf3-4f7b-9c0b-7fd387d113d0" />
 
+3. 35_38_Ineksid.sql
+<img width="423" height="432" alt="image" src="https://github.com/user-attachments/assets/c4267ff5-9dcf-4dc6-a603-bda275e7bb59" />
+
+4. 39_40_Views.sql
+   4.1 vWEmployeesCountByDepartment, vWEmployeesNonConfidentialData, vWITDepartment_Employees, vWEmployeesByDepartment
+<img width="324" height="284" alt="image" src="https://github.com/user-attachments/assets/ec65b9a5-9c36-46c2-a982-f97aabda979e" />
+
+5. 87. Except operaator, 88. Erinevus Except ja not in operaatoril
+Table A, B. Kasutumine execpt
+<img width="372" height="703" alt="image" src="https://github.com/user-attachments/assets/0c77890b-c9ba-494b-a6d9-91b126fce299" />
+
+6. 92_93_ DDL_Trigger_SQL_serveris.sql
+
+<img width="339" height="250" alt="image" src="https://github.com/user-attachments/assets/009e3a22-6cf7-40fa-ae59-985cf454934f" />
