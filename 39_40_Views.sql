@@ -75,3 +75,5 @@ FROM DimEmployee
 UPDATE vwEmployeeDetalisByDepartment
 SET DepartmentName = 'IT'
 WHERE FirstName = 'John'
+
+
