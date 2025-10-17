@@ -1,0 +1,86 @@
+﻿-- 92. DDL Trigger SQL serveris
+
+-- DDL triggereid loomiseks süntaks
+CREATE TRIGGER [Trigger_Name]
+ON [Scope(Server/Database)]
+FOR [EventType1, EventType2, EventType3]
+AS
+BEGIN
+-- Triggeri keha
+END
+
+-- Trigger käivitub CREATE_TABLE DDL sündmuse korral
+CREATE TRIGGER FirstTrigger
+ON Database
+FOR CREATE_TABLE
+AS
+BEGIN
+PRINT 'Uus tabel on loodud'
+END
+
+CREATE TABLE test (id INT)
+
+-- Trigger mitme sündmuse korral
+ALTER TRIGGER FirstTrigger 
+ON Database
+FOR CREATE_TABLE, ALTER_TABLE, DROP_TABLE
+AS
+BEGIN
+PRINT 'Tabel on loodud, muudetud või kustutatud'
+END
+
+-- Tabeli loomise, muutmise või kustutamise takistamine
+ALTER TRIGGER FirstTrigger 
+ON Database
+FOR CREATE_TABLE, ALTER_TABLE, DROP_TABLE
+AS
+BEGIN
+ROLLBACK
+PRINT 'Tabeli loomine, muutmine või kustutamine pole lubatud'
+END
+
+-- Triggeri keelamine
+DISABLE TRIGGER FirstTrigger ON DATABASE
+-- Triggeri kustutamine
+DROP TRIGGER FirstTrigger ON DATABASE
+
+-- Trigger sp_rename käivitamisel
+CREATE TRIGGER RenameTable 
+ON Database
+FOR RENAME
+AS
+BEGIN
+ROLLBACK
+PRINT 'Te tegite ümbernimetuse'
+END
+
+
+-- ==== Файл: 93. Server-Scoped DDL triggerid.rtf ====
+
+-- Serveri-vahemikus olevad DDL triggerid
+-- Andmebaasi ulatuses olev trigger, mis takistab tabelite loomist, muutmist ja kustutamist
+CREATE TRIGGER tr_DatabaseScopeTrigger 
+ON Database
+FOR CREATE_TABLE, ALTER_TABLE, DROP_TABLE
+AS
+BEGIN
+ROLLBACK
+PRINT 'Tabelite loomine, muutmine ja kustutamine selles andmebaasis pole lubatud'
+END
+
+-- Serveri ulatuses olev trigger (ALL SERVER)
+CREATE TRIGGER tr_ServerScopeTrigger
+ON ALL SERVER
+FOR CREATE_TABLE, ALTER_TABLE, DROP_TABLE
+AS
+BEGIN
+ROLLBACK
+PRINT 'Tabelite loomine, muutmine ja kustutamine serveri tasandil pole lubatud'
+END
+
+-- Serveri triggeri keelamine
+DISABLE TRIGGER tr_ServerScopeTrigger ON ALL SERVER
+-- Serveri triggeri lubamine
+ENABLE TRIGGER tr_ServerScopeTrigger ON ALL SERVER
+-- Serveri triggeri kustutamine
+DROP TRIGGER tr_ServerScopeTrigger ON ALL SERVER
